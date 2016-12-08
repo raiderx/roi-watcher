@@ -6,9 +6,20 @@ package org.karpukhin.roiwatcher
  */
 class Item {
 
-    String url;
+    String url
 
-    String title;
+    int voices
 
-    String jurisdiction;
+    String title
+
+    String jurisdiction
+
+    @Override
+    String toString() {
+        return "Item{" +
+                "url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                ", jurisdiction='" + jurisdiction + '\'' +
+                '}'
+    }
 }

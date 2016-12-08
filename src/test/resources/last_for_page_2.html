@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="//css.roi.ru/themes/frontend/libs.css?v=147" />
+<link rel="stylesheet" type="text/css" href="//css.roi.ru/themes/frontend/style.css?v=147" />
+<link rel="stylesheet" type="text/css" href="//css.roi.ru/themes/frontend/custom.css?v=147" />
+<link rel="stylesheet" type="text/css" href="//css.roi.ru/themes/frontend/special.css?v=147" />
+<script type="text/javascript" src="//js.roi.ru/themes/frontend/libs.js?v=147"></script>
+<script type="text/javascript" src="//js.roi.ru/themes/frontend/scripts.js?v=147"></script>
+<script type="text/javascript" src="//js.roi.ru/themes/frontend/spell/spell.js?v=147"></script>
+<script type="text/javascript" src="//js.roi.ru/themes/frontend/custom.js?v=147"></script>
+<title>Российская общественная инициатива</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<meta name="description" content="Российская общественная инициатива">
+	<meta name="keywords" content="Российская общественная инициатива">
+	<meta name="cmsmagazine" content="2a1851c67c8d6d9ce8048b3360529e34"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="sputnik-verification" content="jxfKzCdtfUCK9kvs"/>
+
+	<!--[if lt IE 9]>
+	<script src="//js.roi.ru/html5shiv.js" type="text/javascript"></script>
+	<![endif]-->
+	<!--[if lte IE 9]>
+	<script src="//js.roi.ru/pie.js" type="text/javascript"></script>
+	<![endif]-->
+</head>
+<body class="guest list-page top-inic-page ru">
+
+
+
+
+
+<div id="container">
+	<header>
+		<div id="header1">
+			<div>
+				<div id="oblasti" data-url="https://www.roi.ru/ajax/geolocation/">
+					<div class="oblasti-link highlighted">
+						<a data-petition="0" id="activeRegion" href="javascript:void(0);"><span class="text">Регион не определен</span><span class="arrow"></span></a>
+					</div>
+					<span class="close"></span>
+
+					<div class="oblasti-list">
+					</div>
+				</div>
+				<a href="https://www.roi.ru" id="logo"></a>
+				<div class="link auth">
+	<a href="/cms/extentions/simplesaml/www/module.php/core/authenticate.php?as=100000za-sp">Вход</a>
+</div>				<div class="link low-vision" id="low-vision">
+					<a href="javascript:void(0);">Версия для слабовидящих</a>				</div>
+			</div>
+		</div>
+
+		<div id="header2">
+			<span class="bg-b"></span>
+
+			<div>
+				<a href="/" id="header-map" data-url="https://www.roi.ru/ajax/petitions_map/"></a>
+
+				<div style="display:none;width:800px;height:500px;" id="mapBlock"></div>
+				<div id="header-links">
+					<div>
+						<div class="phone">8-800-200-61-62</div>
+						<ul class="operations" id="yw1">
+<li><a href="/page/how-it-works/">Как это работает?</a></li>
+<li class="feedback-button" data-url="https://www.roi.ru/ajax/accept_rules/"><a href="javascript:void(0);">Обратная связь</a></li>
+</ul>
+					</div>
+					<div><a class="dashed" href="/" id="header-map-2"  data-url="https://www.roi.ru/ajax/petitions_map/">Интерактивная карта</a></div>
+				</div>
+
+				
+					<a id="add-inic" class="dologin unauth" href="#auth-confirm">
+						<span>Опубликовать инициативу</span>
+					</a>
+
+					<div id="auth-confirm" class="publication-page" style="display: none;">
+						<h2>Необходима авторизация</h2>
+
+						<p>Для подачи инициативы Вам необходимо войти на портал с помощью ЕСИА. Перейти к форме авторизации на Портале государственных услуг?</p>
+						<br/>
+
+						<div class="buttons-bottom">
+							<div class="btn2 btn-gray left">
+								<a class="icon arr-l" href="javascript:$.fancybox.close();">Нет</a>
+							</div>
+							<div class="btn2 right">
+								<a class="icon arr-r" href="/cms/extentions/simplesaml/www/module.php/core/authenticate.php?as=100000za-sp">Да</a>
+							</div>
+						</div>
+					</div>
+
+				
+				<div id="header-bottom">
+					<div id="total-inic">
+						<div class="ls">
+							<div>Всего</div>
+							<div>инициатив:</div>
+						</div>
+						<div class="rs"><span><a href="/poll/desc/">2339</a></span></div>
+					</div>
+					<div id="search">
+						<div class="search-block">
+							<form action="/search/" method="get">
+								<input type="text" autocomplete="off" value="" title="Поиск инициатив" class="search-field" name="q">
+								<input type="submit" value="Найти" class="btn">
+								<span class="clear-search"></span>
+							</form>
+						</div>
+						<div class="search-results"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="container-in">
+
+		
+		
+		<section>
+						
+		
+<div class="block-title">
+	<div class="title-text-poll">Инициативы на голосовании</div>
+	<div class="title-b title-b-poll" id="crumb-trail">
+					<a href="https://www.roi.ru">Живая лента</a>
+				<a>&nbsp;/&nbsp;</a>
+				<a href="/poll/popular/">популярные</a>
+				<a>&nbsp;/&nbsp;</a>
+					<a href="/poll/">все</a>
+				<a>&nbsp;/&nbsp;</a>
+					<b>последние</b>
+				<span>•</span>
+		<div><span>2314</span> инициатив</div>
+	</div>
+</div>
+<div class="sort-filter rounded">
+	<div class="b-sort-handler">
+		<a  class="sort-icon b-sort-handler__item   b-sort-handler__item_down">
+			<span class="b-sort-handler__item__arrow"></span>
+		</a>
+		<a  class="sort-icon toggler b-sort-handler__item b-sort-handler__item_active  b-sort-handler__item_up">
+			<span class="b-sort-handler__item__arrow"></span>
+		</a>
+	</div>
+    <div class="sort">
+
+        
+        <div class="filter-select" id="type-filter">
+            <div class="filter-select-link">
+                <a class="button-dropdown " href="javascript:void(0);">
+                    <span data-type="0" class="text">Уровень</span>
+                    <span class="arrow"></span>
+                </a>
+            </div>
+            <div class="filter-select-content">
+                <ul>
+                                                                                                                    <li><label><input type="checkbox"
+                                              value="1" ><span>Федеральные</span></label></li>
+                                                                                                <li><label><input type="checkbox"
+                                              value="2" ><span>Региональные</span></label></li>
+                                                                                                <li><label><input type="checkbox"
+                                              value="3" ><span>Муниципальные</span></label></li>
+                                                            </ul>
+                <div class="apply" style="clear: both">
+                    <a href="javascript:void(0);" class="btn">применить фильтр</a>
+                </div>
+            </div>
+        </div>
+        <div class="filter" id="cat-filter">
+            <div class="filter-link">
+                <a class="button-dropdown " href="javascript:void(0);"><span class="text">Фильтр по разделам</span><span class="arrow"></span></a>
+            </div>
+            <div class="filter-content">
+                <ul>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="29">
+                                <span>Транспорт и дороги</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="30">
+                                <span>Экология</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="31">
+                                <span>Инфраструктура города</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="32">
+                                <span>Жилые дома и дворы</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="33">
+                                <span>Безопасность</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="35">
+                                <span>Бизнес</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="36">
+                                <span>Потребители и сервис</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="37">
+                                <span>Чиновники и гос. услуги</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="789">
+                                <span>Население и миграция</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="831">
+                                <span>Избирательное право</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="880">
+                                <span>Экономика</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="1075">
+                                <span>Здравоохранение</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="1118">
+                                <span>Образование и наука</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="1143">
+                                <span>Уголовный кодекс</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="1154">
+                                <span>Государственное управление</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="1452">
+                                <span>ЖКХ, УК, ТСЖ</span>
+                            </label>
+                        </li>
+                                            <li>
+                            <label>
+                                <input type="checkbox" value="1709">
+                                <span>Государственная поддержка</span>
+                            </label>
+                        </li>
+                                    </ul>
+                <div class="apply">
+                    <a href="javascript:void(0);" class="btn">применить фильтр</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="filter-checkbox">
+
+        <label><input type="checkbox" id="show-archive" >Показать архивные</label>
+
+            </div>
+</div>
+
+
+    <div class="blocks2 petitionlist type-poll">
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>1757</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31934/">Вернуть в Уголовный кодекс ответственность за экономические преступления и преступления, причинившие материальный ущерб государству, в виде конфискации имущества</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>860</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31713/">Устанавливать на подъезды камеры видеонаблюдения и видеофиксации с наружной и внутренней стороны</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>1264</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31709/">Законодательно запретить банкам взимать комиссию за снятие наличных денежных средств с дебетовых карт в банкоматах любых банков на территории РФ в пределах 10 000 рублей в месяц</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>373</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31700/">Обязать все организации публиковать информацию об экономических параметрах своей деятельности</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>911</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31703/">Запретить попрошайничество вне специально отведенных мест (паперти)</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>602</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31699/">Запретить проведение чемпионатов мира по футболу и олимпийских игр на территории РФ</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>720</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31690/">Ввести программу господдержки кредитования на строительство и ремонт жилого дома на земельном участке</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>493</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31689/">Предоставить право приоритета общественному транспорту при движении по правой полосе</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>389</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31685/">Предоставить возможность зрителям смотреть в кинотеатрах фильмы производства различных стран мира</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>2231</b><span>голос</span>
+						</div>
+			<div class="link"><a href="/31735/">Законодательно закрепить, что водительское удостоверение является документом, удостоверяющим личность</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>94</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31678/">Исключить п.4 ст.34 Федерального закона от 30.11.2011 г. № 342-ФЗ «О службе в органах внутренних дел РФ»</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>208</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31671/">Запретить продавать детские ж/д билеты на верхние места</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>219</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31669/">Ввести возможность оплачивать со счета мобильного телефона покупки в магазинах</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>173</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31668/">Создать единый оператор сотовой связи, объединив существующие</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>726</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31665/">Передать мусорные полигоны в собственность мусоросортировочным и мусороперерабатывающим предприятиям</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>1557</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31499/">Отменить комиссию за перечисление денежных средств на счета физических лиц</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>64</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31661/">Создать единую базу счетов клиентов, которую можно будет группировать по тем или иным признакам</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>246</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31653/">Запретить охотоведам и егерям ношение охотничьего оружия, в т.ч. и нарезного при исполнении должностных обязанностей. Для исполнения должностных обязанностей выдать табельное короткоствольное оружие (пистолет ПМ).</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-1 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>2</b><span>голоса</span>
+						</div>
+			<div class="link"><a href="/31660/">Установить дополнительную секцию на светофоре перекрестка улицы Луговая с улицей Свободы (г.Ханты-Мансийск)</a></div>
+			<div class="jurisdiction">Уровень инициативы: Муниципальный</div>
+
+		
+	</div>
+
+	</div>
+        			
+	<div class="col-2 ">
+
+	<div class="item">
+
+		
+			<ul class="item-icon">
+		</ul>			<div class="hour">
+							<b>960</b><span>голосов</span>
+						</div>
+			<div class="link"><a href="/31599/">Передавать номер мобильного телефона в собственность абонента</a></div>
+			<div class="jurisdiction">Уровень инициативы: Федеральный</div>
+
+		
+	</div>
+
+	</div>
+            </div>
+
+    <div class="notes-small"><sup>*</sup> Количество голосов обновляется раз в минуту</div>
+
+<div id="" class="pagination" id="yw0" class="yiiPager"><a class="prev" data-page="0" href="/poll/last/">Предыдущая</a>
+
+
+<a class="" data-page="0" href="/poll/last/">1</a>
+<a class=" active" data-page="1" href="/poll/last/?page=2">2</a>
+<a class="" data-page="2" href="/poll/last/?page=3">3</a>
+<a class="" data-page="3" href="/poll/last/?page=4">4</a>
+<a class="" data-page="4" href="/poll/last/?page=5">5</a>
+<a class="" data-page="5" href="/poll/last/?page=6">6</a>
+<a class="" data-page="6" href="/poll/last/?page=7">7</a>
+<a class="" data-page="7" href="/poll/last/?page=8">8</a>
+<a class="" data-page="8" href="/poll/last/?page=9">9</a>
+<a class="" data-page="9" href="/poll/last/?page=10">10</a>
+<span>...</span>
+<a href="/poll/last/?page=116" data-page="116">116</a>
+<a class="next" data-page="2" href="/poll/last/?page=3">Следующая</a></div id="" class="pagination">
+		</section>
+	</div>
+
+</div>
+
+<footer>
+	<div class="in">
+		<div class="copyrights">
+			&copy; 2012-2016 Российская общественная инициатива<br>
+			<br>
+
+			<div><a class="bold" href="/page/user-agreement/">Пользовательское соглашение</a></div>
+			<div>По вопросам работы портала обращайтесь:</div>
+			<div><a href="mailto:info@roi.ru">info@roi.ru</a></div>
+			<div><b>8-800-200-61-62</b></div>
+			<div class="date"><a href="/page/api">API РОИ</a></div>
+		</div>
+		<nav class="footer-menu">
+			<ul class="operations" id="yw2">
+<li><a href="/page/about/">О проекте</a></li>
+<li><a href="/news/">Новости</a></li>
+<li><a href="/page/rules/">Памятка</a></li>
+<li class="feedback-button" data-url="https://www.roi.ru/ajax/accept_rules/"><a href="javascript:void(0);">Обратная связь</a></li>
+</ul>		</nav>
+		<div class="social">
+			<div>Мы в социальных сетях</div>
+
+			<a href="http://vk.com/rosiniciativa" target="_blank"><img alt="" src="//static.roi.ru/themes/frontend/style/f-vk.png"></a>
+
+			<a href="https://www.facebook.com/rosiniciativa" target="_blank"><img alt="" src="//static.roi.ru/themes/frontend/style/f-fb.png"></a>
+
+			<a href="https://twitter.com/rosiniciativa" target="_blank"><img alt="" src="//static.roi.ru/themes/frontend/style/f-tw.png"></a>
+		</div>
+		<div class="support">
+			При поддержке
+			<div><a href="http://f-id.ru/">Фонда информационной демократии</a></div>
+		</div>
+		<div class="award">
+		    <span>Лауреат Премии Рунета<br/> <strong>2013</strong></span>
+		</div>
+	</div>
+</footer>
+
+	<!-- Sputnik.Metrika counter -->
+	<script>
+		(function (d, t, p) {
+			var j = d.createElement(t);
+			j.async = true;
+			j.type = "text/javascript";
+			j.src = ("https:" == p ? "https:" : "http:") + "//stat.sputnik.ru/cnt.js";
+			var s = d.getElementsByTagName(t)[0];
+			s.parentNode.insertBefore(j, s);
+		})(document, "script", document.location.protocol);
+	</script>
+	<!-- Sputnik.Metrika counter -->
+
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function () {
+				try {
+					w.yaCounter20664214 = new Ya.Metrika({
+						id: 20664214,
+						webvisor: true,
+						clickmap: true,
+						trackLinks: true,
+						accurateTrackBounce: true,
+						trackHash: true
+					});
+				} catch (e) {
+				}
+			});
+			var n = d.getElementsByTagName("script")[0],
+				s = d.createElement("script"),
+				f = function () {
+					n.parentNode.insertBefore(s, n);
+				};
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+			if (w.opera == "[object Opera]") {
+				d.addEventListener("DOMContentLoaded", f, false);
+			} else {
+				f();
+			}
+		})(document, window, "yandex_metrika_callbacks");
+	</script>
+
+	<noscript>
+		<div><img src="//mc.yandex.ru/watch/20664214" style="position:absolute; left:-9999px;" alt=""/></div>
+	</noscript>
+	<!-- /Yandex.Metrika counter -->
+</body>
+</html>

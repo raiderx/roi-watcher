@@ -6,9 +6,16 @@ package org.karpukhin.roiwatcher
  */
 class RoiStreamProviderImpl implements RoiStreamProvider {
 
-    private static final String LAST_ITEMS_URL = 'https://www.roi.ru/poll/last/';
+    private static final String LAST_ITEMS_URL = 'https://www.roi.ru/poll/last/'
+    private static final String LAST_ITEMS_FOR_PAGE_URL = 'https://www.roi.ru/poll/last/?page={0}'
 
-    InputStream getLastItemStream() {
+    @Override
+    InputStream getLastItemsStream() {
+        null
+    }
+
+    @Override
+    InputStream getLastItemsForPageStream(int page) {
         null
     }
 }
