@@ -1,0 +1,15 @@
+group 'org.karpukhin'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.7'
+
+    testCompile 'junit:junit:4.12'
+}
