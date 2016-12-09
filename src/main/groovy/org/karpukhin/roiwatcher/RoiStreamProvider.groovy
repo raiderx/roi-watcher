@@ -12,4 +12,6 @@ interface RoiStreamProvider {
     InputStream getLastItemsStream()
 
     InputStream getLastItemsForPageStream(int page)
+
+    InputStream getPetitionStream(int id)
 }

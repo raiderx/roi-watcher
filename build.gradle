@@ -30,6 +30,7 @@ dependencies {
     runtime 'ch.qos.logback:logback-classic:1.1.7'
     runtime 'org.postgresql:postgresql:9.4-1201-jdbc41'
     compile 'org.jsoup:jsoup:1.9.2'
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
