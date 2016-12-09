@@ -9,9 +9,9 @@ import groovy.transform.CompileStatic
 @CompileStatic
 interface RoiStreamProvider {
 
-    InputStream getLastItemsStream()
+    InputStream getLastPetitionPreviewsStream()
 
-    InputStream getLastItemsForPageStream(int page)
+    InputStream getLastPetitionPreviewsForPageStream(int page)
 
     InputStream getPetitionStream(int id)
 }

@@ -9,7 +9,9 @@ import groovy.transform.CompileStatic
 @CompileStatic
 interface RoiApi {
 
-    List<Item> getLastItems();
+    List<PetitionPreview> getLastPetitionPreviews()
 
-    List<Item> getLastItemsForPage(int page);
+    List<PetitionPreview> getLastPetitionPreviewsForPage(int page)
+
+    Petition getPetition(int id)
 }

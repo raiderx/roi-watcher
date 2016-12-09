@@ -16,30 +16,29 @@ class RoiStreamProviderImpl implements RoiStreamProvider {
     private static final String LAST_ITEMS_URL = 'https://www.roi.ru/poll/last/?archive=1'
     private static final String LAST_ITEMS_FOR_PAGE_URL = 'https://www.roi.ru/poll/last/?page={0}&archive=1'
     private static final String PETITION_URL = 'https://www.roi.ru/{0}/'
+    private static final String ITEMS_URL = 'https://www.roi.ru/poll/last/?author={0}&archive=1'
 
     @Override
-    InputStream getLastItemsStream() {
+    InputStream getLastPetitionPreviewsStream() {
         def request = new HttpGet(LAST_ITEMS_URL)
-        def client = HttpClients.createDefault()
-        def response = client.execute(request)
-        response.getEntity().content
+        HttpClients.createDefault().execute(request).entity.content
     }
 
     @Override
-    InputStream getLastItemsForPageStream(int page) {
+    InputStream getLastPetitionPreviewsForPageStream(int page) {
         if (page < 1) {
             throw new IllegalArgumentException('Parameter \'page\' can not be less than 1')
         }
         if (page == 1) {
-            return getLastItemsStream()
+            return getLastPetitionPreviewsStream()
         }
-        def request = new HttpGet(MessageFormat.format(LAST_ITEMS_FOR_PAGE_URL, page))
+        def request = new HttpGet(MessageFormat.format(LAST_ITEMS_FOR_PAGE_URL, Integer.toString(page)))
         HttpClients.createDefault().execute(request).entity.content
     }
 
     @Override
     InputStream getPetitionStream(int id) {
-        def request = new HttpGet(MessageFormat.format(PETITION_URL, id))
+        def request = new HttpGet(MessageFormat.format(PETITION_URL, Integer.toString(id)))
         HttpClients.createDefault().execute(request).entity.content
     }
 }

@@ -4,22 +4,26 @@ package org.karpukhin.roiwatcher
  * @author Pavel Karpukhin
  * @since 08.12.16
  */
-class Item {
+class PetitionPreview {
 
     String url
 
-    int voices
-
     String title
+
+    int voices
 
     String jurisdiction
 
+    boolean locked
+
     @Override
     String toString() {
-        return "Item{" +
+        return "PetitionPreview{" +
                 "url='" + url + '\'' +
                 ", title='" + title + '\'' +
+                ", voices=" + voices +
                 ", jurisdiction='" + jurisdiction + '\'' +
+                ", locked=" + locked +
                 '}'
     }
 }

@@ -29,36 +29,44 @@ class RoiApiImplTest {
     }
 
     @Test
-    void testGetLastItems() {
+    void testGetLastPetitionPreviews() {
 
-        when(streamProvider.lastItemsStream).thenReturn(RoiStreamProvider.class.getResourceAsStream('/last.html'))
+        when(streamProvider.lastPetitionPreviewsStream).thenReturn(RoiStreamProvider.class.getResourceAsStream('/last.html'))
 
-        def result = api.getLastItems()
+        def previews = api.getLastPetitionPreviews()
 
-        assertThat(result, is(not(nullValue())))
-        assertThat(result, hasSize(20))
+        assertThat(previews, is(not(nullValue())))
+        assertThat(previews, hasSize(20))
 
-        def item = result.get(0)
+        def preview = previews.get(0)
 
-        assertThat(item, is(not(nullValue())))
-        assertThat(item.url, is('https://www.roi.ru/31766/'))
-        assertThat(item.voices, is(1))
+        assertThat(preview, is(not(nullValue())))
+        assertThat(preview.url, is('https://www.roi.ru/31766/'))
+        assertThat(preview.voices, is(1))
+        assertThat(preview.locked, is(false))
     }
 
     @Test
-    void testGetLastItemsForPage() {
+    void testGetLastPetitionPreviewsForPage() {
 
-        when(streamProvider.getLastItemsForPageStream(2)).thenReturn(RoiStreamProvider.class.getResourceAsStream('/last_for_page_2.html'))
+        when(streamProvider.getLastPetitionPreviewsForPageStream(117)).thenReturn(RoiStreamProvider.class.getResourceAsStream('/last_for_page_117.html'))
 
-        def result = api.getLastItemsForPage(2)
+        def previews = api.getLastPetitionPreviewsForPage(117)
 
-        assertThat(result, is(not(nullValue())))
-        assertThat(result, hasSize(20))
+        assertThat(previews, is(not(nullValue())))
+        assertThat(previews, hasSize(20))
 
-        def item = result.get(0)
+        def first = previews.get(0)
 
-        assertThat(item, is(not(nullValue())))
-        assertThat(item.url, is('https://www.roi.ru/31934/'))
-        assertThat(item.voices, is(1757))
+        assertThat(first, is(not(nullValue())))
+        assertThat(first.url, is('https://www.roi.ru/23883/'))
+        assertThat(first.voices, is(1968))
+        assertThat(first.locked, is(false))
+
+        def second = previews.get(6);
+        assertThat(second, is(not(nullValue())))
+        assertThat(second.url, is('https://www.roi.ru/23578/'))
+        assertThat(second.voices, is(829))
+        assertThat(second.locked, is(true))
     }
 }

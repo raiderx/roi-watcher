@@ -22,23 +22,39 @@ class RoiApiImpl implements RoiApi {
         this.provider = provider
     }
 
-    List<Item> getLastItems() {
-        def document = Jsoup.parse(provider.lastItemsStream, UTF8, ROI_BASE_URL)
+    @Override
+    List<PetitionPreview> getLastPetitionPreviews() {
+        def document = Jsoup.parse(provider.lastPetitionPreviewsStream, UTF8, ROI_BASE_URL)
         def els = document.select('div.item')
         return els.stream().map({ Element e -> getItem(e) }).collect(Collectors.toList())
     }
 
-    List<Item> getLastItemsForPage(int page) {
-        def document = Jsoup.parse(provider.getLastItemsForPageStream(page), UTF8, ROI_BASE_URL)
+    @Override
+    List<PetitionPreview> getLastPetitionPreviewsForPage(int page) {
+        def document = Jsoup.parse(provider.getLastPetitionPreviewsForPageStream(page), UTF8, ROI_BASE_URL)
         def els = document.select('div.item')
         return els.stream().map({ Element e -> getItem(e) }).collect(Collectors.toList())
     }
 
-    static Item getItem(Element element) {
-        def link = element.select('div.link a').get(0)
-        def jurisdiction = element.select('div.jurisdiction').get(0)
-        def voices = element.select('div.hour b').get(0)
-        new Item(url: ROI_BASE_URL + link.attr('href'), voices: Integer.parseInt(voices.text()),
-                title: link.text(), jurisdiction: jurisdiction.text())
+    @Override
+    Petition getPetition(int id) {
+        def document = Jsoup.parse(provider.getPetitionStream(id), UTF8, ROI_BASE_URL)
+        def titleEl = document.select('h1')
+        def descriptionEl = document.select('div.petition-text-block')
+        def decisionEl = document.select('div.decision-item div.paragraph-transform')
+        def votesEl = document.select('#voting-status > div.status > div > div.number > div')
+        def negativeVotesEl = document.select('div.voting-solution > div.negative > span > b')
+        return new Petition(id: id, url: ROI_BASE_URL, title: titleEl.text(), description: descriptionEl.text(),
+                decision: decisionEl.text(), votes: Integer.parseInt(votesEl.text()),
+                negativeVotes: Integer.parseInt(negativeVotesEl.text()))
+    }
+
+    static PetitionPreview getItem(Element element) {
+        def linkEl = element.select('div.link a')
+        def jurisdictionEl = element.select('div.jurisdiction')
+        def voicesEl = element.select('div.hour b')
+        def lockedEl = element.select('li.lock')
+        new PetitionPreview(url: ROI_BASE_URL + linkEl.attr('href'), voices: Integer.parseInt(voicesEl.text()),
+                title: linkEl.text(), jurisdiction: jurisdictionEl.text(), locked: !lockedEl.empty)
     }
 }
