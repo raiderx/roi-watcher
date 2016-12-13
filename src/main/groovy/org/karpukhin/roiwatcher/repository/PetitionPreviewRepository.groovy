@@ -1,6 +1,6 @@
 package org.karpukhin.roiwatcher.repository
 
-import org.karpukhin.roiwatcher.db.PetitionPreview
+import org.karpukhin.roiwatcher.model.PetitionPreview
 import org.springframework.data.repository.CrudRepository
 
 /**

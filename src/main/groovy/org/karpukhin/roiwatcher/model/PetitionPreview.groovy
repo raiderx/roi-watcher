@@ -1,4 +1,4 @@
-package org.karpukhin.roiwatcher.db
+package org.karpukhin.roiwatcher.model
 
 import groovy.transform.CompileStatic
 
