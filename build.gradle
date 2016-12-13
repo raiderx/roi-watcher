@@ -4,12 +4,30 @@ version '0.0.1-SNAPSHOT'
 apply plugin: 'groovy'
 apply plugin: 'war'
 
+ext {
+    hibernateVersion = '5.2.5.Final'
+    springVersion = '4.3.4.RELEASE'
+}
+
 repositories {
     mavenCentral()
 }
 
+configurations.all {
+    exclude group: 'commons-logging', module: 'commons-logging'
+}
+
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.7'
+    compile "org.hibernate:hibernate-core:${hibernateVersion}"
+    compile "org.springframework:spring-core:${springVersion}"
+    compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile 'org.springframework.data:spring-data-jpa:1.10.5.RELEASE'
+    compile 'ch.qos.logback:logback-classic:1.1.8'
 
     testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'com.h2database:h2:1.4.193'
+    testCompile "org.springframework:spring-test:${springVersion}"
 }
