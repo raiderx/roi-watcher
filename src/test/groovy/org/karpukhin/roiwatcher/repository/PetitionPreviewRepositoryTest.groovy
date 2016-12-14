@@ -4,7 +4,6 @@ import groovy.transform.CompileStatic
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.karpukhin.roiwatcher.model.PetitionPreview
-import org.springframework.beans.factory.FactoryBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
@@ -12,7 +11,6 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
 import org.springframework.orm.jpa.JpaTransactionManager
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean
 import org.springframework.orm.jpa.vendor.Database
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter
 import org.springframework.test.context.ContextConfiguration
@@ -65,7 +63,7 @@ class PetitionPreviewRepositoryTest {
 
             def factory = new LocalContainerEntityManagerFactoryBean()
             factory.dataSource = dataSource()
-            factory.jpaVendorAdapter =  adapter
+            factory.jpaVendorAdapter = adapter
             factory.packagesToScan = 'org.karpukhin.roiwatcher.model'
             factory
         }

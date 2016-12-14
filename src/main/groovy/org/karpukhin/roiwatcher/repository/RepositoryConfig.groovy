@@ -1,13 +1,22 @@
 package org.karpukhin.roiwatcher.repository
 
+import groovy.transform.CompileStatic
 import org.apache.commons.dbcp2.BasicDataSource
+import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessorRegistrar
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Import
+import org.springframework.context.annotation.PropertySource
+import org.springframework.context.annotation.PropertySources
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.orm.jpa.JpaTransactionManager
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
 import org.springframework.orm.jpa.vendor.Database
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter
 import org.springframework.transaction.PlatformTransactionManager
+import org.springframework.transaction.annotation.EnableTransactionManagement
 
 import javax.persistence.EntityManagerFactory
 import javax.sql.DataSource
@@ -16,10 +25,24 @@ import javax.sql.DataSource
  * @author Pavel Karpukhin
  * @since 13.12.16
  */
+@CompileStatic
 @Configuration
+@EnableJpaRepositories
+@EnableTransactionManagement
+@Import(ConfigurationPropertiesBindingPostProcessorRegistrar.class)
+@PropertySources([
+    @PropertySource('classpath:/application.properties'),
+    @PropertySource(value = 'file:${roiWatcherHome}/application.properties', ignoreResourceNotFound = true)
+])
 class RepositoryConfig {
 
     @Bean
+    static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        new PropertySourcesPlaceholderConfigurer()
+    }
+
+    @Bean
+    @ConfigurationProperties('dataSource')
     DataSource dataSource() {
         new BasicDataSource()
     }
@@ -42,5 +65,4 @@ class RepositoryConfig {
     PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         new JpaTransactionManager(entityManagerFactory)
     }
-
 }
