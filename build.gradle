@@ -26,8 +26,8 @@ dependencies {
     compile "org.springframework:spring-orm:${springVersion}"
     compile 'org.springframework.data:spring-data-jpa:1.10.5.RELEASE'
     compile 'org.springframework.boot:spring-boot:1.4.2.RELEASE'
-    compile 'ch.qos.logback:logback-classic:1.1.8'
 
+    runtime 'ch.qos.logback:logback-classic:1.1.7'
     runtime 'org.postgresql:postgresql:9.4-1201-jdbc41'
 
     testCompile 'junit:junit:4.12'
