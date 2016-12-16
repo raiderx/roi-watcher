@@ -31,7 +31,7 @@ class RoiStreamProviderImpl implements RoiStreamProvider {
     @Override
     InputStream getLastPetitionPreviewsStream() {
         def request = new HttpGet(LAST_ITEMS_URL)
-        HttpClients.createDefault().execute(request).entity.content
+        httpClient.execute(request).entity.content
     }
 
     @Override
