@@ -2,7 +2,9 @@ package org.karpukhin.roiwatcher.roi
 
 import groovy.transform.CompileStatic
 import org.apache.http.client.methods.HttpGet
+import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.impl.client.HttpClients
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager
 
 import java.text.MessageFormat
 
@@ -17,6 +19,14 @@ class RoiStreamProviderImpl implements RoiStreamProvider {
     private static final String LAST_ITEMS_FOR_PAGE_URL = 'https://www.roi.ru/poll/last/?page={0}&archive=1'
     private static final String PETITION_URL = 'https://www.roi.ru/{0}/'
     private static final String ITEMS_URL = 'https://www.roi.ru/poll/last/?author={0}&archive=1'
+
+    private final CloseableHttpClient httpClient;
+
+    RoiStreamProviderImpl() {
+        def manager = new PoolingHttpClientConnectionManager()
+        manager.maxTotal = 200
+        httpClient = HttpClients.custom().setConnectionManager(manager).build()
+    }
 
     @Override
     InputStream getLastPetitionPreviewsStream() {
@@ -33,12 +43,12 @@ class RoiStreamProviderImpl implements RoiStreamProvider {
             return getLastPetitionPreviewsStream()
         }
         def request = new HttpGet(MessageFormat.format(LAST_ITEMS_FOR_PAGE_URL, Integer.toString(page)))
-        HttpClients.createDefault().execute(request).entity.content
+        httpClient.execute(request).entity.content
     }
 
     @Override
     InputStream getPetitionStream(int id) {
         def request = new HttpGet(MessageFormat.format(PETITION_URL, Integer.toString(id)))
-        HttpClients.createDefault().execute(request).entity.content
+        httpClient.execute(request).entity.content
     }
 }

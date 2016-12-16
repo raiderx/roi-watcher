@@ -9,4 +9,5 @@ import org.springframework.data.repository.CrudRepository
  */
 interface PetitionPreviewRepository extends CrudRepository<PetitionPreview, Integer> {
 
+    PetitionPreview findByUrl(String url)
 }

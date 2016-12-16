@@ -25,21 +25,28 @@ class RoiApiImpl implements RoiApi {
 
     @Override
     List<PetitionPreview> getLastPetitionPreviews() {
-        def document = Jsoup.parse(provider.lastPetitionPreviewsStream, UTF8, ROI_BASE_URL)
+        def stream = provider.lastPetitionPreviewsStream
+        def document = Jsoup.parse(stream, UTF8, ROI_BASE_URL)
+        stream.close()
         def els = document.select('div.item')
         return els.stream().map({ Element e -> getItem(e) }).collect(Collectors.toList())
     }
 
     @Override
     List<PetitionPreview> getLastPetitionPreviewsForPage(int page) {
-        def document = Jsoup.parse(provider.getLastPetitionPreviewsForPageStream(page), UTF8, ROI_BASE_URL)
+        def stream = provider.getLastPetitionPreviewsForPageStream(page)
+        def document = Jsoup.parse(stream, UTF8, ROI_BASE_URL)
+        stream.close()
         def els = document.select('div.item')
+
         return els.stream().map({ Element e -> getItem(e) }).collect(Collectors.toList())
     }
 
     @Override
     Petition getPetition(int id) {
-        def document = Jsoup.parse(provider.getPetitionStream(id), UTF8, ROI_BASE_URL)
+        def stream = provider.getPetitionStream(id)
+        def document = Jsoup.parse(stream, UTF8, ROI_BASE_URL)
+        stream.close()
         def titleEl = document.select('h1')
         def descriptionEl = document.select('div.petition-text-block')
         def decisionEl = document.select('div.decision-item div.paragraph-transform')

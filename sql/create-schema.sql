@@ -6,5 +6,6 @@ create table PETITION_PREVIEW (
   VOICES integer not null,
   JURISDICTION varchar(50) not null,
   primary key(ID),
-  constraint UK_PETITION_PREVIEW_ID unique(ID)
+  constraint UK_PETITION_PREVIEW_ID unique(ID),
+  constraint UK_PETITION_PREVIEW_URL unique(URL)
 );
