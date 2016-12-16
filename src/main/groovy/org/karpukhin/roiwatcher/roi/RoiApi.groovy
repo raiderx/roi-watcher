@@ -1,6 +1,7 @@
-package org.karpukhin.roiwatcher
+package org.karpukhin.roiwatcher.roi
 
 import groovy.transform.CompileStatic
+import org.karpukhin.roiwatcher.model.PetitionPreview
 
 /**
  * @author Pavel Karpukhin

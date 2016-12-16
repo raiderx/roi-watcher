@@ -15,7 +15,7 @@ import javax.persistence.Table
  */
 @CompileStatic
 @Entity
-@Table(name = 'PETITIOPN_PREVIEW')
+@Table(name = 'PETITION_PREVIEW')
 class PetitionPreview {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,4 +27,21 @@ class PetitionPreview {
     String title
     @Column(name = 'IS_LOCKED', nullable = false)
     boolean locked
+    @Column(name = 'VOICES', nullable = false)
+    int voices
+    @Column(name = 'JURISDICTION', nullable = false, length = 50)
+    String jurisdiction
+
+
+    @Override
+    String toString() {
+        return "PetitionPreview{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                ", locked=" + locked +
+                ", voices=" + voices +
+                ", jurisdiction='" + jurisdiction + '\'' +
+                '}'
+    }
 }

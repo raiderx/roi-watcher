@@ -50,7 +50,6 @@ class RepositoryConfig {
     @Bean
     LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         def adapter = new HibernateJpaVendorAdapter()
-        adapter.generateDdl = true
         adapter.showSql = true
         adapter.database = Database.POSTGRESQL
 
@@ -58,6 +57,7 @@ class RepositoryConfig {
         factory.dataSource = dataSource()
         factory.jpaVendorAdapter =  adapter
         factory.packagesToScan = 'org.karpukhin.roiwatcher.model'
+        factory.jpaPropertyMap = ['hibernate.hbm2ddl.auto': 'validate']
         factory
     }
 

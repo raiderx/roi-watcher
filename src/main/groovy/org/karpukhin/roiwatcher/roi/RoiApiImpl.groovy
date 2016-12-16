@@ -1,8 +1,9 @@
-package org.karpukhin.roiwatcher
+package org.karpukhin.roiwatcher.roi
 
 import groovy.transform.CompileStatic
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
+import org.karpukhin.roiwatcher.model.PetitionPreview
 
 import java.util.stream.Collectors
 

@@ -1,4 +1,4 @@
-package org.karpukhin.roiwatcher
+package org.karpukhin.roiwatcher.roi
 
 import groovy.transform.CompileStatic
 import org.apache.http.client.methods.HttpGet

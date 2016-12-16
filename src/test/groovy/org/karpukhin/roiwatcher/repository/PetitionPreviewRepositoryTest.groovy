@@ -40,7 +40,7 @@ class PetitionPreviewRepositoryTest {
 
     @Test
     void test() {
-        def petition = new PetitionPreview(url: 'some-url', title: 'some-title')
+        def petition = new PetitionPreview(url: 'some-url', title: 'some-title', jurisdiction: 'some-jurisdiction')
         previewRepository.save(petition)
 
         assertThat(petition.id, is(not(nullValue())))
