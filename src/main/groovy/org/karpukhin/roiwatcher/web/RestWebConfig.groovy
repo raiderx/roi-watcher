@@ -3,6 +3,7 @@ package org.karpukhin.roiwatcher.web
 import groovy.transform.CompileStatic
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.web.config.EnableSpringDataWebSupport
 import org.springframework.http.MediaType
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView
 @ComponentScan('org.karpukhin.roiwatcher.web.controller.rest')
 @Configuration
 @EnableWebMvc
+@EnableSpringDataWebSupport
 class RestWebConfig extends WebMvcConfigurerAdapter {
 
     @Override

@@ -9,8 +9,9 @@
 <table id="table">
 
 </table>
+<div id="pager"></div>
 
-<script type="text/template" id="tpl-row">
+<script type="text/template" id="tpl-previews">
     <![CDATA[
     <% _.each(previews, function(preview) { %>
     <tr>
@@ -21,18 +22,70 @@
     ]]>
 </script>
 
+<script type="text/template" id="tpl-pager">
+    <![CDATA[
+    <%
+        if (pages > 1) {
+            if (page > 0) {
+    %>
+    <a href="javascript:void(0)" class="page" data-page="<%- (page-1) %>">&lt;</a>
+    <%
+            }
+            var lastValidPage = -1;
+            var pageNumbers = [0, page-2, page-1, page, page+1, page+2, pages-1];
+            _.each(pageNumbers, function(p) {
+                if (p > lastValidPage && p < pages) {
+                    if (p > lastValidPage + 1) {
+    %>
+    <span>&nbsp;...&nbsp;</span>
+    <%
+                    }
+                    if (p == page) {
+    %>
+    <a><%- (p + 1) %></a>
+    <%
+                    } else {
+    %>
+    <a href="javascript:void(0)" class="page" data-page="<%- p %>"><%- (p + 1) %></a>
+    <%
+                    }
+                    lastValidPage = p;
+                }
+            });
+            if (page < pages - 1) {
+    %>
+    <a href="javascript:void(0)" class="page" data-page="<%- (page+1) %>">&gt;</a>
+    <%
+            }
+        }
+    %>
+    ]]>
+</script>
+
 <script type="text/javascript" th:src="@{/js/jquery-1.12.4.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/underscore-1.8.3.min.js}"></script>
 <script type="text/javascript">
-    function loadTemplate(selector) {
-        return _.template( $(selector).text().replace('<![CDATA[', '').replace(']]>', '') );
+    function loadTemplate(element) {
+        return _.template( $(element).text().replace('<![CDATA[', '').replace(']]>', '') );
+    }
+
+    function fetch(page, size) {
+        $.get('api/previews', { page: page, size: size }).done(function(response) {
+            var renderPreviews = loadTemplate( $('#tpl-previews') );
+            $('#table').html( renderPreviews({ previews: response.content }) );
+
+            var renderPager = loadTemplate( $('#tpl-pager') );
+            $('#pager').html( renderPager({ page: response.number, pages: response.totalPages }) );
+
+            $('a.page').on('click', function(event) {
+                var page = parseInt( $(event.target).data('page') );
+                fetch(page, 30);
+            });
+        });
     }
 
     $(function() {
-        $.get('api/previews', null, function(response) {
-            var renderPetitions = loadTemplate( '#tpl-row' );
-            $('#table').html( renderPetitions({ previews: response.content }) );
-        })
+        fetch(0, 30);
     });
 </script>
 
