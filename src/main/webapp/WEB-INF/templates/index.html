@@ -64,25 +64,12 @@
 
 <script type="text/javascript" th:src="@{/js/jquery-1.12.4.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/underscore-1.8.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/roiwatcher.js}"></script>
 <script type="text/javascript">
-    function loadTemplate(element) {
-        return _.template( $(element).text().replace('<![CDATA[', '').replace(']]>', '') );
-    }
 
-    function fetch(page, size) {
-        $.get('api/previews', { page: page, size: size }).done(function(response) {
-            var renderPreviews = loadTemplate( $('#tpl-previews') );
-            $('#table').html( renderPreviews({ previews: response.content }) );
-
-            var renderPager = loadTemplate( $('#tpl-pager') );
-            $('#pager').html( renderPager({ page: response.number, pages: response.totalPages }) );
-
-            $('a.page').on('click', function(event) {
-                var page = parseInt( $(event.target).data('page') );
-                fetch(page, 30);
-            });
-        });
-    }
+    APP_URLS = {
+        'previews': '[[@{/api/previews}]]'
+    };
 
     $(function() {
         fetch(0, 30);
