@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Petition Previews</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<table id="table">
+
+</table>
+
+<script type="text/template" id="tpl-row">
+    <![CDATA[
+    <% _.each(previews, function(preview) { %>
+    <tr>
+        <td> <a href="<%- preview.url %>" target="_blank"><%- preview.title %></a></td>
+        <td> <%- preview.voices %></td>
+    </tr>
+    <% }); %>
+    ]]>
+</script>
+
+<script type="text/javascript" th:src="@{/js/jquery-1.12.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/underscore-1.8.3.min.js}"></script>
+<script type="text/javascript">
+    function loadTemplate(selector) {
+        return _.template( $(selector).text().replace('<![CDATA[', '').replace(']]>', '') );
+    }
+
+    $(function() {
+        $.get('api/previews', null, function(response) {
+            var renderPetitions = loadTemplate( '#tpl-row' );
+            $('#table').html( renderPetitions({ previews: response.content }) );
+        })
+    });
+</script>
+
+</body>
+</html>

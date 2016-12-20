@@ -8,12 +8,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * @since 17.12.16.
  */
 @CompileStatic
-class RoiWatcherApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
-    @Override
-    protected String[] getServletMappings() {
-        ['*.html']
-    }
+class HtmlServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -22,6 +17,16 @@ class RoiWatcherApplicationInitializer extends AbstractAnnotationConfigDispatche
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        null
+        [WebConfig.class] as Class[]
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        ['*.html'] as String[]
+    }
+
+    @Override
+    protected String getServletName() {
+        'html'
     }
 }
