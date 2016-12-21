@@ -34,7 +34,9 @@ class UpdatePreviewListTask implements Runnable {
         def page = 0
         while (newPetitions > 0) {
             def previews = roiApi.getLastPetitionPreviewsForPage(++page)
+            log.info('Got previews: {}', previews.size())
             newPetitions = savePreviews(previews)
+            log.info('Saved previews: {}', newPetitions)
         }
     }
 
