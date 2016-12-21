@@ -22,7 +22,9 @@ $ createdb -E UTF-8 -O roi_watcher -U postgres roi_watcher
 $ psql -f sql/create-schema.sql -U roi_watcher roi_watcher
 ```
 
-Install JDK
+Install JDK.
+
+Install [Apache Tomcat](https://tomcat.apache.org/).
 
 Install [Gradle](https://gradle.org) and build application:
 
@@ -30,4 +32,8 @@ Install [Gradle](https://gradle.org) and build application:
 $ gradle war
 ```
 
-Install [Apache Tomcat](https://tomcat.apache.org/) and install application.
+Find `roiwatcher.war` in `build/libs` folder and put it in `$CATALINA_BASE/webapps` folder.
+
+Start Apache Tomcat.
+
+Open http://localhost:8080/roiwatcher in browser.
