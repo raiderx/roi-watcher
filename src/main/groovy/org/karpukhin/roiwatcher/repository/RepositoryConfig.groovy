@@ -3,10 +3,9 @@ package org.karpukhin.roiwatcher.repository
 import groovy.transform.CompileStatic
 import org.apache.commons.dbcp2.BasicDataSource
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessorRegistrar
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Import
 import org.springframework.context.annotation.PropertySource
 import org.springframework.context.annotation.PropertySources
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer
@@ -22,14 +21,16 @@ import javax.persistence.EntityManagerFactory
 import javax.sql.DataSource
 
 /**
+ * Configuration for entity repositories
+ *
  * @author Pavel Karpukhin
  * @since 13.12.16
  */
 @CompileStatic
 @Configuration
+@EnableConfigurationProperties
 @EnableJpaRepositories
 @EnableTransactionManagement
-@Import(ConfigurationPropertiesBindingPostProcessorRegistrar.class)
 @PropertySources([
     @PropertySource('classpath:/application.properties'),
     @PropertySource(value = 'file:${roiWatcherHome}/application.properties', ignoreResourceNotFound = true)
