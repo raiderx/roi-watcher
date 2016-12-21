@@ -8,6 +8,8 @@ import org.karpukhin.roiwatcher.roi.RoiApi
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
+import static org.springframework.util.Assert.notNull
+
 /**
  *
  * @author Pavel Karpukhin
@@ -16,20 +18,23 @@ import org.springframework.stereotype.Component
 @CompileStatic
 @Component
 @Slf4j
-class UpdatePreviewListTask implements Runnable {
+class UpdatePreviewsTask implements Runnable {
 
     private RoiApi roiApi;
 
     private PetitionPreviewRepository petitionPreviewRepository;
 
     @Autowired
-    UpdatePreviewListTask(RoiApi roiApi, PetitionPreviewRepository petitionPreviewRepository) {
+    UpdatePreviewsTask(RoiApi roiApi, PetitionPreviewRepository petitionPreviewRepository) {
+        notNull(roiApi, 'Parameter \'roiApi\' can not be null')
+        notNull(petitionPreviewRepository, 'Parameter \'petitionPreviewRepository\' can not be null')
         this.roiApi = roiApi
         this.petitionPreviewRepository = petitionPreviewRepository
     }
 
     @Override
     void run() {
+        log.info('{} started', UpdatePreviewsTask.class.simpleName)
         def newPetitions = 1
         def page = 0
         while (newPetitions > 0) {

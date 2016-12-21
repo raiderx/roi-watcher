@@ -7,14 +7,13 @@ import org.karpukhin.roiwatcher.model.PetitionPreview
 import org.karpukhin.roiwatcher.repository.PetitionPreviewRepository
 import org.karpukhin.roiwatcher.roi.RoiApi
 
-import static org.hamcrest.Matchers.any
 import static org.hamcrest.Matchers.greaterThan
 import static org.hamcrest.Matchers.is
 import static org.mockito.Mockito.mock
-import static org.mockito.Mockito.never
 import static org.mockito.Mockito.times
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.verifyNoMoreInteractions
+import static org.mockito.Mockito.verifyZeroInteractions
 import static org.mockito.Mockito.when
 import static org.mockito.hamcrest.MockitoHamcrest.argThat
 import static org.mockito.hamcrest.MockitoHamcrest.intThat
@@ -25,7 +24,7 @@ import static org.mockito.hamcrest.MockitoHamcrest.intThat
  * @since 20.12.16.
  */
 @CompileStatic
-class UpdatePreviewListTaskTest {
+class UpdatePreviewsTaskTest {
 
     private RoiApi api
     private PetitionPreviewRepository repository
@@ -35,15 +34,16 @@ class UpdatePreviewListTaskTest {
     void setUp() {
         api = mock(RoiApi.class)
         repository = mock(PetitionPreviewRepository.class)
-        task = new UpdatePreviewListTask(api, repository)
+        task = new UpdatePreviewsTask(api, repository)
     }
 
     @Test
     void testWhenNoPreviews() {
         when(api.getLastPetitionPreviewsForPage(intThat(is(1)))).thenReturn(Collections.EMPTY_LIST)
         task.run()
-        verify(repository, never()).findByUrl(argThat(any(String.class)))
-        verify(repository, never()).save(argThat(any(PetitionPreview.class)))
+        verify(api, times(1)).getLastPetitionPreviewsForPage(1)
+        verifyNoMoreInteractions(api)
+        verifyZeroInteractions(repository)
     }
 
     @Test
