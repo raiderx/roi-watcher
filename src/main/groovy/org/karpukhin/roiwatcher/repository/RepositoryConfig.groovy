@@ -50,7 +50,6 @@ class RepositoryConfig {
     @Bean
     LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         def adapter = new HibernateJpaVendorAdapter()
-        adapter.showSql = true
         adapter.database = Database.POSTGRESQL
 
         def factory = new LocalContainerEntityManagerFactoryBean()
