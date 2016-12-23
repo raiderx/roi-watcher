@@ -12,15 +12,15 @@ function search(title, page, size) {
 
         $('a.page').on('click', function(event) {
             var page = parseInt( $(event.target).data('page') );
-            search(title, page, 30);
+            search(title, page, APP_PROPERTIES.petitionsPerPage);
         });
     });
 }
 
 function initIndexPage() {
-    search('', 0, 30);
+    search('', 0, APP_PROPERTIES.petitionsPerPage);
 
     $('[name=search]').on('click', function() {
-        search( $('[name=title]').val(), 0, 30 );
+        search( $('[name=title]').val(), 0, APP_PROPERTIES.petitionsPerPage );
     });
 }
