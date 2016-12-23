@@ -2,6 +2,8 @@ package org.karpukhin.roiwatcher.web
 
 import groovy.transform.CompileStatic
 import org.karpukhin.roiwatcher.repository.RepositoryConfig
+import org.karpukhin.roiwatcher.roi.ApiConfig
+import org.karpukhin.roiwatcher.task.TaskConfig
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer
 
 /**
@@ -13,7 +15,7 @@ class RestServletInitializer extends AbstractAnnotationConfigDispatcherServletIn
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        [RepositoryConfig.class] as Class[]
+        [ApiConfig.class, RepositoryConfig.class, TaskConfig.class] as Class[]
     }
 
     @Override
