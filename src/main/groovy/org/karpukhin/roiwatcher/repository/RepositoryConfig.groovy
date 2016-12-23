@@ -55,7 +55,7 @@ class RepositoryConfig {
 
         def factory = new LocalContainerEntityManagerFactoryBean()
         factory.dataSource = dataSource()
-        factory.jpaVendorAdapter =  adapter
+        factory.jpaVendorAdapter = adapter
         factory.packagesToScan = 'org.karpukhin.roiwatcher.model'
         factory.jpaPropertyMap = ['hibernate.hbm2ddl.auto': 'validate']
         factory
