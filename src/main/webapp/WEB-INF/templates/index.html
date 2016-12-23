@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Petition Previews</title>
+    <title>Инициативы</title>
     <meta charset="utf-8" />
 </head>
 <body>
+
+<input type="text" name="title"/><button type="button" name="search">Найти</button>
 
 <table id="table">
 
@@ -71,9 +73,7 @@
         'previews': '[[@{/api/previews}]]'
     };
 
-    $(function() {
-        fetch(0, 30);
-    });
+    $(initIndexPage);
 </script>
 
 </body>

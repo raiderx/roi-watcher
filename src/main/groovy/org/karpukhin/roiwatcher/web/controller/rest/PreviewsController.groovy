@@ -6,6 +6,7 @@ import org.karpukhin.roiwatcher.repository.PetitionPreviewRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.util.StringUtils
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
@@ -22,7 +23,11 @@ class PreviewsController {
     private PetitionPreviewRepository previewRepository
 
     @RequestMapping(value = '/previews', method = RequestMethod.GET)
-    Page<PetitionPreview> previews(Pageable pageable) {
-        previewRepository.findAll(pageable)
+    Page<PetitionPreview> previews(String title, Pageable pageable) {
+        if (StringUtils.isEmpty(title)) {
+            previewRepository.findAll(pageable)
+        } else {
+            previewRepository.findByTitleContainingIgnoreCase('%' + title + '%', pageable)
+        }
     }
 }

@@ -1,6 +1,8 @@
 package org.karpukhin.roiwatcher.repository
 
 import org.karpukhin.roiwatcher.model.PetitionPreview
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.PagingAndSortingRepository
 
 /**
@@ -10,4 +12,6 @@ import org.springframework.data.repository.PagingAndSortingRepository
 interface PetitionPreviewRepository extends PagingAndSortingRepository<PetitionPreview, Integer> {
 
     PetitionPreview findByUrl(String url)
+
+    Page<PetitionPreview> findByTitleContainingIgnoreCase(String title, Pageable pageable)
 }
