@@ -36,4 +36,4 @@ Find `roiwatcher.war` in `build/libs` folder and put it in `$CATALINA_BASE/webap
 
 Start Apache Tomcat.
 
-Open http://localhost:8080/roiwatcher in browser.
+Open [http://localhost:8080/roiwatcher](http://localhost:8080/roiwatcher) in browser.
