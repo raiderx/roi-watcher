@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
+import java.time.Instant
 
 /**
  * @author Pavel Karpukhin
@@ -31,7 +32,8 @@ class PetitionPreview {
     int voices
     @Column(name = 'JURISDICTION', nullable = false, length = 50)
     String jurisdiction
-
+    @Column(name = 'ADDED', nullable = false)
+    Instant added
 
     @Override
     String toString() {

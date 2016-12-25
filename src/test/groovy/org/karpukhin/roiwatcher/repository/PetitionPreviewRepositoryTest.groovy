@@ -19,6 +19,7 @@ import org.springframework.transaction.PlatformTransactionManager
 
 import javax.persistence.EntityManagerFactory
 import javax.sql.DataSource
+import java.time.Instant
 
 import static org.hamcrest.Matchers.is
 import static org.hamcrest.Matchers.not
@@ -40,7 +41,8 @@ class PetitionPreviewRepositoryTest {
 
     @Test
     void test() {
-        def petition = new PetitionPreview(url: 'some-url', title: 'some-title', jurisdiction: 'some-jurisdiction')
+        def petition = new PetitionPreview(url: 'some-url', title: 'some-title',
+                jurisdiction: 'some-jurisdiction', added: Instant.now())
         previewRepository.save(petition)
 
         assertThat(petition.id, is(not(nullValue())))

@@ -8,6 +8,8 @@ import org.karpukhin.roiwatcher.roi.RoiApi
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
+import java.time.Instant
+
 import static org.springframework.util.Assert.notNull
 
 /**
@@ -51,6 +53,7 @@ class UpdatePreviewsTask implements Runnable {
             def other = petitionPreviewRepository.findByUrl(preview.url)
             if (other == null) {
                 ++newPreviews
+                preview.added = Instant.now()
                 petitionPreviewRepository.save(preview)
             }
         }
