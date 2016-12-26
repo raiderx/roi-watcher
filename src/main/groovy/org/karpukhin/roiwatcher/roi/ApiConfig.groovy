@@ -1,6 +1,8 @@
 package org.karpukhin.roiwatcher.roi
 
 import groovy.transform.CompileStatic
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -12,8 +14,13 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class ApiConfig {
 
+    @ConfigurationProperties('httpClientConnectionManager')
+    PoolingHttpClientConnectionManager httpClientConnectionManager() {
+        new PoolingHttpClientConnectionManager()
+    }
+
     @Bean
     RoiApi roiApi() {
-        new RoiApiImpl(new RoiStreamProviderImpl())
+        new RoiApiImpl(new RoiStreamProviderImpl(httpClientConnectionManager()))
     }
 }

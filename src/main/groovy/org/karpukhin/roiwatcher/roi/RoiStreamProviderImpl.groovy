@@ -2,11 +2,14 @@ package org.karpukhin.roiwatcher.roi
 
 import groovy.transform.CompileStatic
 import org.apache.http.client.methods.HttpGet
+import org.apache.http.conn.HttpClientConnectionManager
 import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.impl.client.HttpClients
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager
 
 import java.text.MessageFormat
+
+import static org.springframework.util.Assert.isTrue
+import static org.springframework.util.Assert.notNull
 
 /**
  * @author Pavel Karpukhin
@@ -22,10 +25,9 @@ class RoiStreamProviderImpl implements RoiStreamProvider {
 
     private final CloseableHttpClient httpClient;
 
-    RoiStreamProviderImpl() {
-        def manager = new PoolingHttpClientConnectionManager()
-        manager.maxTotal = 200
-        httpClient = HttpClients.custom().setConnectionManager(manager).build()
+    RoiStreamProviderImpl(HttpClientConnectionManager connectionManager) {
+        notNull(connectionManager, 'Parameter \'connectionManager\' can not be null')
+        httpClient = HttpClients.custom().setConnectionManager(connectionManager).build()
     }
 
     @Override
@@ -36,9 +38,7 @@ class RoiStreamProviderImpl implements RoiStreamProvider {
 
     @Override
     InputStream getLastPetitionPreviewsForPageStream(int page) {
-        if (page < 1) {
-            throw new IllegalArgumentException('Parameter \'page\' can not be less than 1')
-        }
+        isTrue(page > 0, 'Parameter \'page\' can not be less than 1')
         if (page == 1) {
             return getLastPetitionPreviewsStream()
         }
