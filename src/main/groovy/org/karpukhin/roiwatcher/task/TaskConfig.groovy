@@ -1,10 +1,13 @@
 package org.karpukhin.roiwatcher.task
 
 import groovy.transform.CompileStatic
+import org.karpukhin.roiwatcher.PropertiesConfig
 import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Import
 import org.springframework.scheduling.TaskScheduler
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler
 
@@ -17,6 +20,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler
 @CompileStatic
 @ComponentScan('org.karpukhin.roiwatcher.task')
 @Configuration
+@EnableConfigurationProperties
+@Import(PropertiesConfig.class)
 class TaskConfig {
 
     /**

@@ -2,13 +2,12 @@ package org.karpukhin.roiwatcher.repository
 
 import groovy.transform.CompileStatic
 import org.apache.commons.dbcp2.BasicDataSource
+import org.karpukhin.roiwatcher.PropertiesConfig
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.PropertySource
-import org.springframework.context.annotation.PropertySources
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer
+import org.springframework.context.annotation.Import
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.orm.jpa.JpaTransactionManager
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
@@ -31,16 +30,8 @@ import javax.sql.DataSource
 @EnableConfigurationProperties
 @EnableJpaRepositories
 @EnableTransactionManagement
-@PropertySources([
-    @PropertySource('classpath:/application.properties'),
-    @PropertySource(value = 'file:${roiWatcherHome}/application.properties', ignoreResourceNotFound = true)
-])
+@Import(PropertiesConfig.class)
 class RepositoryConfig {
-
-    @Bean
-    static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        new PropertySourcesPlaceholderConfigurer()
-    }
 
     @Bean
     @ConfigurationProperties('dataSource')
