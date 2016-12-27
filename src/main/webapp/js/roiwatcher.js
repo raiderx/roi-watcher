@@ -23,4 +23,9 @@ function initIndexPage() {
     $('button[name=search]').on('click', function() {
         search( $('[name=title]').val(), 0, APP_PROPERTIES['petitionsPerPage'] );
     });
+    $('input[name=title]').on('keypress', function(event) {
+       if (event.which == 13) {
+           search( $(event.target).val(), 0, APP_PROPERTIES['petitionsPerPage'] );
+       }
+    });
 }
