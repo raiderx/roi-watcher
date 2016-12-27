@@ -12,6 +12,10 @@ Underscore.js and PostgreSQL.
 * Apache Tomcat 7 or more,
 * PostgreSQL.
 
+## Screenshots
+
+![Main window](roi-watcher.png)
+
 ## Install
 
 Install [PostgreSQL](https://www.postgresql.org) and create database:

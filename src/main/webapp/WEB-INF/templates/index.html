@@ -1,36 +1,86 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Инициативы</title>
-    <meta charset="utf-8" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
 
-<input type="text" name="title"/><button type="button" name="search">Найти</button>
+<div class="container">
 
-<table id="table">
+    <div class="page-header">
+        <h1>Инициативы</h1>
+    </div>
 
-</table>
-<div id="pager"></div>
+    <div class="input-group">
+        <input type="text" name="title" class="form-control" placeholder="Search for..."/>
+        <span class="input-group-btn">
+            <button type="button" name="search" class="btn btn-default">Найти!</button>
+        </span>
+    </div>
+
+    <div id="previews"></div>
+
+    <nav id="pager"></nav>
+
+</div>
 
 <script type="text/template" id="tpl-previews">
     <![CDATA[
-    <% _.each(previews, function(preview) { %>
-    <tr>
-        <td> <a href="<%- preview.url %>" target="_blank"><%- preview.title %></a></td>
-        <td> <%- preview.voices %></td>
-    </tr>
-    <% }); %>
+    <%
+        var cols = APP_PROPERTIES['columnsPerPage'];
+        var rows = Math.floor(previews.length / cols) + (previews.length % cols > 0 ? 1 : 0);
+        for(var i = 0; i < rows; ++i) {
+    %>
+    <div class="row row-eq-height">
+        <%
+            for (var j = 0; j < cols; ++j) {
+                var index = i * cols + j;
+                if (index < previews.length) {
+                    var preview = previews[index];
+        %>
+        <div class="col-md-4">
+            <p><%- preview.title %></p>
+            <p><a href="<%- preview.url %>" target="_blank" class="btn btn-default" role="button">Подробнее &raquo;</a></p>
+        </div>
+        <%
+                }
+            }
+        %>
+    </div>
+    <%
+        }
+    %>
     ]]>
 </script>
 
 <script type="text/template" id="tpl-pager">
     <![CDATA[
+    <ul class="pagination">
     <%
         if (pages > 1) {
             if (page > 0) {
     %>
-    <a href="javascript:void(0)" class="page" data-page="<%- (page-1) %>">&lt;</a>
+    <li>
+        <a href="javascript:void(0)" class="page" data-page="<%- (page-1) %>" aria-label="Previous">
+            &laquo;
+        </a>
+    </li>
     <%
             }
             var lastValidPage = -1;
@@ -39,16 +89,24 @@
                 if (p > lastValidPage && p < pages) {
                     if (p > lastValidPage + 1) {
     %>
-    <span>&nbsp;...&nbsp;</span>
+    <li class="disabled">
+        <a href="javascript:void(0)">
+            <span>&nbsp;...&nbsp;</span>
+        </a>
+    </li>
     <%
                     }
                     if (p == page) {
     %>
-    <a><%- (p + 1) %></a>
+    <li class="active">
+        <a><%- (p + 1) %></a>
+    </li>
     <%
                     } else {
     %>
-    <a href="javascript:void(0)" class="page" data-page="<%- p %>"><%- (p + 1) %></a>
+    <li>
+        <a href="javascript:void(0)" class="page" data-page="<%- p %>"><%- (p + 1) %></a>
+    </li>
     <%
                     }
                     lastValidPage = p;
@@ -56,15 +114,21 @@
             });
             if (page < pages - 1) {
     %>
-    <a href="javascript:void(0)" class="page" data-page="<%- (page+1) %>">&gt;</a>
+    <li>
+        <a href="javascript:void(0)" class="page" data-page="<%- (page+1) %>" aria-label="Next">
+            &raquo;
+        </a>
+    </li>
     <%
             }
         }
     %>
+    </ul>
     ]]>
 </script>
 
 <script type="text/javascript" th:src="@{/js/jquery-1.12.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/underscore-1.8.3.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/roiwatcher.js}"></script>
 <script type="text/javascript">
@@ -73,7 +137,9 @@
         'previews': '[[@{/api/previews}]]'
     };
     APP_PROPERTIES = {
-        'petitionsPerPage': [[${petitionsPerPage}]]
+        'petitionsPerPage': [[${petitionsPerPage}]],
+        'rowsPerPage': [[${rowsPerPage}]],
+        'columnsPerPage': [[${columnsPerPage}]]
     };
 
     $(initIndexPage);

@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod
 @Controller
 class IndexController {
 
-    @Value('${view.petitionsPerPage:20}')
-    private int petitionsPerPage
+    @Value('${view.rowsPerPage:6}')
+    private int rowsPerPage
+    @Value('${view.columnsPerPage:3}')
+    private int columnsPerPage
 
     @RequestMapping(value = '/index', method = RequestMethod.GET)
     String index(Model model) {
         model.addAttribute('recipient', 'World')
-                .addAttribute('petitionsPerPage', petitionsPerPage)
+                .addAttribute('petitionsPerPage', rowsPerPage * columnsPerPage)
+                .addAttribute('rowsPerPage', rowsPerPage)
+                .addAttribute('columnsPerPage', columnsPerPage)
         'index'
     }
 }
