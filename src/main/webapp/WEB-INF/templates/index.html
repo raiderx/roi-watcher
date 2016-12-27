@@ -56,7 +56,12 @@
         %>
         <div class="col-md-4">
             <p><%- preview.title %></p>
-            <p><a href="<%- preview.url %>" target="_blank" class="btn btn-default" role="button">Подробнее &raquo;</a></p>
+            <div class="pull-left">
+                <a href="<%- preview.url %>" target="_blank" class="btn btn-default" role="button">Подробнее &raquo;</a>
+            </div>
+            <% if (preview.locked === true) { %>
+            <div class="pull-right"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>
+            <% } %>
         </div>
         <%
                 }
